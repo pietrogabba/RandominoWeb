@@ -1,14 +1,37 @@
 <!-- Toolbar -->
 <div class="toolbar">
   <mat-toolbar color="primary">
-    <span>Randomino Web</span>
+    <mat-icon>library_music</mat-icon>&nbsp;<span>Randomino Web</span>
     <span class="fbRowFill">
 
     </span>
     <span>V.1.0.0</span>
   </mat-toolbar>
 </div>
-<div>
-Result: {{calcolataAlVolo}}
+<div class="main">
+  <div>
+    <mat-form-field>
+      <mat-label>Tonica</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let tonic of tonicNotes" [value]="tonic.value">
+          {{tonic.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br />
+    <mat-form-field>
+      <mat-label>Alterazione</mat-label>
+      <mat-select value="None">
+        <mat-option value="None">-</mat-option>
+        <mat-option value="#">diesis</mat-option>
+        <mat-option value="b">bemolle</mat-option>
+      </mat-select>
+    </mat-form-field><br />
+    <mat-radio-group aria-label="Flavour">
+      <mat-radio-button value="major">Maggiore</mat-radio-button>
+      <mat-radio-button value="minor">Minore</mat-radio-button>
+    </mat-radio-group><br /><br />
+    <button mat-mini-fab color="primary" (click)="calculateScale()"><mat-icon>music_note</mat-icon></button>
+  </div>
+  <div style="margin-top: 20px;">Scala: [{{calcolataAlVolo}}]</div>
 </div>
 <router-outlet></router-outlet>
