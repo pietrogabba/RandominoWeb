@@ -1,5 +1,5 @@
 // circolo delle quinte (alterazioni #)
-var circleOfFifth = [
+export const CircleOfFifth = [
     { note: "C", alterations: 0},
     { note: "G", alterations: 1},
     { note: "D", alterations: 2},
@@ -10,7 +10,7 @@ var circleOfFifth = [
     { note: "C#", alterations: 7}
 ];
 
-var circleOfFifthAlterations = [
+export const CircleOfFifthAlterations = [
     {index: 0, alteration: "F"},
     {index: 1, alteration: "C"},
     {index: 2, alteration: "G"},
@@ -21,7 +21,7 @@ var circleOfFifthAlterations = [
 ];
 
 // circolo delle quarte (alterazioni b)
-var circleOfFourth = [
+export const circleOfFourth = [
     { note: "C", alterations: 0},
     { note: "F", alterations: 1},
     { note: "Bb", alterations: 2},
@@ -32,7 +32,7 @@ var circleOfFourth = [
     { note: "Cb", alterations: 7}
 ];
 
-var circleOfFourthAlterations = [
+export const circleOfFourthAlterations = [
     {index: 0, alteration: "B"},
     {index: 1, alteration: "E"},
     {index: 2, alteration: "A"},

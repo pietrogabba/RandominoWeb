@@ -10,10 +10,10 @@ import { Alteration } from './global/alteration';
 })
 export class AppComponent {
   title = 'RandominoWeb';
-  calcolataAlVolo: string;
+  calcolataAlVolo: Array<string>;
   constructor(private tonalityCalcService: TonalityCalculatorService)
   {
-    this.calcolataAlVolo = tonalityCalcService.getTonalityNoteCollection("A", Alteration.None);
+    this.calcolataAlVolo = tonalityCalcService.getTonalityNoteCollection("E", Alteration.None);
   }
 
 }
