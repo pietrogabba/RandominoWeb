@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { TonalityCalculatorService } from './services/tonality-calculator.service';
 import { Alteration } from './global/alteration';
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import {take} from 'rxjs/operators';
 
 interface TonicNote{
   value: string,
@@ -15,7 +17,7 @@ interface TonicNote{
 })
 export class AppComponent {
   title = 'RandominoWeb';
-  calcolataAlVolo: Array<string>;
+  calculatedScale: Array<string>;
   tonicNotes: TonicNote[] = [
     {value: 'A', viewValue: 'A'},
     {value: 'B', viewValue: 'B'},
@@ -26,14 +28,23 @@ export class AppComponent {
     {value: 'G', viewValue: 'G'}
   ];
 
-  constructor(private tonalityCalcService: TonalityCalculatorService)
+  constructor(private tonalityCalcService: TonalityCalculatorService,
+    private _ngZone: NgZone)
   {
     
   }
 
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this._ngZone.onStable.pipe(take(1))
+        .subscribe(() => this.autosize.resizeToFitContent(true));
+  }
+
   calculateScale()
   {
-    this.calcolataAlVolo = this.tonalityCalcService.getTonalityNoteCollection("E", Alteration.None);
+    this.calculatedScale = this.tonalityCalcService.getTonalityNoteCollection("E", Alteration.None);
   }
 
 }
