@@ -11,6 +11,7 @@ export class TonalityCalculatorService {
 
   getTonalityNoteCollection(tonicNote: string, circleToUse: string, flavour: string) : Array<string>
   {
+    console.log(flavour);
     let alteredNotes = new Array<string>();
     let numberOfAlterations = 0;
     let alterationSymbol = Alteration.sharp;
@@ -23,7 +24,8 @@ export class TonalityCalculatorService {
       referenceCircle = circleOfFourth;
     }
 
-    numberOfAlterations = referenceCircle.find(a => a.note === tonicNote).alterations;
+    numberOfAlterations = this.getNumberOfAlterations(referenceCircle, flavour, tonicNote);
+
     let scaleSequence = this.getScaledNoteSequence(tonicNote.substring(0, 1));
     for(let i = 0; i < scaleSequence.length; i++){
       for(let a = 0; a < numberOfAlterations; a++){
@@ -34,6 +36,18 @@ export class TonalityCalculatorService {
     }
     alteredNotes = scaleSequence;
     return alteredNotes;
+  }
+
+  private getNumberOfAlterations(
+    referenceCircle: {note: string, relatedMinor: string, 
+    alterations: number}[], 
+    flavour: string, 
+    tonicNote: string): number{
+
+    if(flavour === 'minor'){
+      return referenceCircle.find(a => a.relatedMinor === tonicNote).alterations;
+    }
+    return referenceCircle.find(a => a.note === tonicNote).alterations;
   }
 
   private getScaledNoteSequence(startNote: string): Array<string> {

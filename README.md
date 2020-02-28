@@ -3,7 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
 ## ToDo list:
-- Introdurre bootstrap: per dimensionare i componenti su mobile
+- Gestire relative minori
+- Fare visulizzazione TAB chitarra per scale
+- Fare visualizzazion Keyboard view
 
 ## Development server
 

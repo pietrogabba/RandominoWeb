@@ -22,27 +22,29 @@
       <div class="col-sm-3">
         <mat-form-field>
           <mat-label>Tipo Circolo (ascendente/discendente)</mat-label>
-          <mat-select (selectionChange)="fillCmbTonic($event)" value="None" formControlName="cmbCircle">
+          <mat-select (selectionChange)="cmbCircle_OnChange()" value="None" formControlName="cmbCircle">
             <mat-option value="asc">Ascendente</mat-option>
             <mat-option value="desc">Discendente</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="col-sm-3">      
+        <mat-radio-group aria-label="Flavour" formControlName="rdFlavour" (change)="rdFlavour_OnChange()">
+          <mat-radio-button checked="true" value="major">Maggiore</mat-radio-button>
+          <mat-radio-button value="minor">Minore</mat-radio-button>
+        </mat-radio-group>
+      </div>
       <div class="col-sm-3">
         <mat-form-field>
           <mat-label>Tonica</mat-label>
           <mat-select formControlName="cmbTonic">
-            <mat-option *ngFor="let tonic of tonicNotes" [value]="tonic.note">
-              {{tonic.note}}
+            <mat-option *ngFor="let tonic of tonicNotes" [value]="tonic">
+              {{tonic}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm-3">      
-        <mat-radio-group aria-label="Flavour" formControlName="rdFlavour">
-          <mat-radio-button checked="true" value="major">Maggiore</mat-radio-button>
-          <mat-radio-button value="minor">Minore</mat-radio-button>
-        </mat-radio-group></div>
+      <div class="col-sm-3"></div>
     </div>
     <div class="row">
       <div class="col-sm-12">

@@ -21,12 +21,12 @@ export class AppComponent {
   
   title = 'RandominoWeb';
   scaleForm: FormGroup;
-  tonicNotes: Array<{note: string, alterations: number}>;
+  tonicNotes: Array<string>;
 
   constructor(private tonalityCalcService: TonalityCalculatorService, fb: FormBuilder)
   {
     this.model = new TonalityRequest();
-    this.tonicNotes = CircleOfFifth;
+    this.tonicNotes = CircleOfFifth.map(x => x.note);
 
     this.scaleForm = fb.group({
       cmbCircle: ['asc', Validators.required],
@@ -42,12 +42,20 @@ export class AppComponent {
     });
   }
 
-  fillCmbTonic(event){
-    if(event.value === 'asc'){
-      this.tonicNotes = CircleOfFifth;
-    }else if (event.value === 'desc'){
-      this.tonicNotes = circleOfFourth;
-    }
+  cmbCircle_OnChange(){
+    this.fillCmbTonic();
+  }
+
+  rdFlavour_OnChange(){
+    this.fillCmbTonic();
+  }
+
+  fillCmbTonic(){
+    if(this.model.circle === 'asc'){
+      this.tonicNotes = (this.model.flavour === 'minor')?CircleOfFifth.map(x => x.relatedMinor):CircleOfFifth.map(x => x.note);
+    }else if (this.model.circle === 'desc'){
+      this.tonicNotes = (this.model.flavour === 'minor')?circleOfFourth.map(x => x.relatedMinor):circleOfFourth.map(x => x.note);
+    }    
   }
 
   calculateScale()
