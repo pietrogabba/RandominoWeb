@@ -1,8 +1,8 @@
-import { Component, NgZone, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { TonalityRequest } from './entities/tonality-request';
 import { TonalityCalculatorService } from './services/tonality-calculator.service';
-import { Alteration } from './global/alteration';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
-import {take} from 'rxjs/operators';
 
 interface TonicNote{
   value: string,
@@ -16,8 +16,10 @@ interface TonicNote{
   providers: [TonalityCalculatorService]
 })
 export class AppComponent {
+  @Input() model: TonalityRequest;
+  
   title = 'RandominoWeb';
-  calculatedScale: Array<string>;
+  scaleForm: FormGroup;
   tonicNotes: TonicNote[] = [
     {value: 'A', viewValue: 'A'},
     {value: 'B', viewValue: 'B'},
@@ -28,23 +30,30 @@ export class AppComponent {
     {value: 'G', viewValue: 'G'}
   ];
 
-  constructor(private tonalityCalcService: TonalityCalculatorService,
-    private _ngZone: NgZone)
+  constructor(private tonalityCalcService: TonalityCalculatorService, fb: FormBuilder)
   {
-    
-  }
+    this.model = new TonalityRequest();
+    this.scaleForm = fb.group({
+      cmbTonic: ['', Validators.required],
+      cmbAlteration: ['None', Validators.required],
+      rdFlavour: ['major'],
+      txtResult: []
+    });
 
-  @ViewChild('autosize') autosize: CdkTextareaAutosize;
-
-  triggerResize() {
-    // Wait for changes to be applied, then trigger textarea resize.
-    this._ngZone.onStable.pipe(take(1))
-        .subscribe(() => this.autosize.resizeToFitContent(true));
+    this.scaleForm.valueChanges.subscribe(value => {
+      this.model.tonic = value.cmbTonic;
+      this.model.alteration = value.cmbAlteration;
+      this.model.flavour = value.rdFlavour;
+      this.calculateScale();
+    });
   }
 
   calculateScale()
   {
-    this.calculatedScale = this.tonalityCalcService.getTonalityNoteCollection("E", Alteration.None);
+    let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.alteration);
+    this.scaleForm.patchValue({
+      txtResult: calculatedScaleArray.join(',')
+    }, { emitEvent: false });
   }
 
 }
