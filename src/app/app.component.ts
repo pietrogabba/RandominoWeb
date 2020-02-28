@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TonalityRequest } from './entities/tonality-request';
 import { TonalityCalculatorService } from './services/tonality-calculator.service';
+import { CircleOfFifth, circleOfFourth } from './global/definitions';
 
 interface TonicNote{
   value: string,
@@ -20,37 +21,38 @@ export class AppComponent {
   
   title = 'RandominoWeb';
   scaleForm: FormGroup;
-  tonicNotes: TonicNote[] = [
-    {value: 'A', viewValue: 'A'},
-    {value: 'B', viewValue: 'B'},
-    {value: 'C', viewValue: 'C'},
-    {value: 'D', viewValue: 'D'},
-    {value: 'E', viewValue: 'E'},
-    {value: 'F', viewValue: 'F'},
-    {value: 'G', viewValue: 'G'}
-  ];
+  tonicNotes: Array<{note: string, alterations: number}>;
 
   constructor(private tonalityCalcService: TonalityCalculatorService, fb: FormBuilder)
   {
     this.model = new TonalityRequest();
+    this.tonicNotes = CircleOfFifth;
+
     this.scaleForm = fb.group({
+      cmbCircle: ['asc', Validators.required],
       cmbTonic: ['', Validators.required],
-      cmbAlteration: ['None', Validators.required],
       rdFlavour: ['major'],
       txtResult: []
     });
 
     this.scaleForm.valueChanges.subscribe(value => {
+      this.model.circle = value.cmbCircle;
       this.model.tonic = value.cmbTonic;
-      this.model.alteration = value.cmbAlteration;
       this.model.flavour = value.rdFlavour;
-      this.calculateScale();
     });
+  }
+
+  fillCmbTonic(event){
+    if(event.value === 'asc'){
+      this.tonicNotes = CircleOfFifth;
+    }else if (event.value === 'desc'){
+      this.tonicNotes = circleOfFourth;
+    }
   }
 
   calculateScale()
   {
-    let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.alteration, this.model.flavour);
+    let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.circle, this.model.flavour);
     this.scaleForm.patchValue({
       txtResult: calculatedScaleArray.join(',')
     }, { emitEvent: false });

@@ -21,21 +21,20 @@
     <div class="row">
       <div class="col-sm-3">
         <mat-form-field>
-          <mat-label>Tonica</mat-label>
-          <mat-select formControlName="cmbTonic">
-            <mat-option *ngFor="let tonic of tonicNotes" [value]="tonic.value">
-              {{tonic.viewValue}}
-            </mat-option>
+          <mat-label>Tipo Circolo (ascendente/discendente)</mat-label>
+          <mat-select (selectionChange)="fillCmbTonic($event)" value="None" formControlName="cmbCircle">
+            <mat-option value="asc">Ascendente</mat-option>
+            <mat-option value="desc">Discendente</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col-sm-3">
         <mat-form-field>
-          <mat-label>Alterazione</mat-label>
-          <mat-select value="None" formControlName="cmbAlteration">
-            <mat-option value="None">-</mat-option>
-            <mat-option value="#">diesis</mat-option>
-            <mat-option value="b">bemolle</mat-option>
+          <mat-label>Tonica</mat-label>
+          <mat-select formControlName="cmbTonic">
+            <mat-option *ngFor="let tonic of tonicNotes" [value]="tonic.note">
+              {{tonic.note}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -44,7 +43,6 @@
           <mat-radio-button checked="true" value="major">Maggiore</mat-radio-button>
           <mat-radio-button value="minor">Minore</mat-radio-button>
         </mat-radio-group></div>
-      <div class="col-sm-3"></div>
     </div>
     <div class="row">
       <div class="col-sm-12">
@@ -52,6 +50,11 @@
           <mat-label>Scala risultante</mat-label>
           <textarea formControlName="txtResult" rows="8" matInput></textarea>
         </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button mat-raised-button color="primary" (click)="calculateScale()">Calcola</button>
       </div>
     </div>
   </form>
