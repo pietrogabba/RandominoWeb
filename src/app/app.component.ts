@@ -50,7 +50,7 @@ export class AppComponent {
 
   calculateScale()
   {
-    let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.alteration);
+    let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.alteration, this.model.flavour);
     this.scaleForm.patchValue({
       txtResult: calculatedScaleArray.join(',')
     }, { emitEvent: false });
