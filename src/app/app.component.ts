@@ -55,11 +55,14 @@ export class AppComponent {
       this.tonicNotes = (this.model.flavour === 'minor')?CircleOfFifth.map(x => x.relatedMinor):CircleOfFifth.map(x => x.note);
     }else if (this.model.circle === 'desc'){
       this.tonicNotes = (this.model.flavour === 'minor')?circleOfFourth.map(x => x.relatedMinor):circleOfFourth.map(x => x.note);
-    }    
+    }
+
+    this.scaleForm.patchValue({cmbTonic: null}); //resetto perche si ripopola
   }
 
   calculateScale()
   {
+    //this.scaleForm.patchValue({txtResult: ''}, {emitEvent: false});
     let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.circle, this.model.flavour);
     this.scaleForm.patchValue({
       txtResult: calculatedScaleArray.join(',')
