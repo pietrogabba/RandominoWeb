@@ -47,8 +47,9 @@ export class TonalityCalculatorService {
 
     if(flavour === 'minor'){
       circle = referenceCircle.find(a => a.relatedMinor === tonicNote);
+    }else{
+      circle = referenceCircle.find(a => a.note === tonicNote);
     }
-    circle = referenceCircle.find(a => a.note === tonicNote);
     
     if(circle)
       return circle.alterations;
