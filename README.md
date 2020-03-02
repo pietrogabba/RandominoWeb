@@ -9,9 +9,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     c. melodica
     d. armonica
     e. dorica ?
-2. Fare visualizzazione TAB chitarra per scale
-3. Fare visualizzazione Keyboard view
-4. Generazione casuale di giri armonici
+2. Replace delle strane note (es: E#)    
+3. Fare visualizzazione TAB chitarra per scale
+4. Fare visualizzazione Keyboard view
+5. Generazione casuale di giri armonici
 
 ## Development server
 

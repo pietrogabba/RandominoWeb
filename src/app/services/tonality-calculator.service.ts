@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Alteration } from '../global/alteration';
-import { CircleOfFifth, CircleOfFifthAlterations, circleOfFourthAlterations, circleOfFourth } from '../global/definitions';
+import { CircleOfFifth, CircleOfFifthAlterations, circleOfFourthAlterations, circleOfFourth, AscendingNoteList, DescendingNoteList } from '../global/definitions';
+import { ScaleType } from '../global/scaletype';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,12 @@ export class TonalityCalculatorService {
 
   constructor() { }
 
-  getTonalityNoteCollection(tonicNote: string, circleToUse: string, flavour: string) : Array<string>
+  getTonalityNoteCollection(tonicNote: string, circleToUse: string, flavour: string, scaleType: string) : Array<string>
   {
     if(!tonicNote)
       return [];
 
-    let alteredNotes = new Array<string>();
+    //let calculatedNoteColl = new Array<string>();
     let numberOfAlterations = 0;
     let alterationSymbol = Alteration.sharp;
     let referenceCircleAlterations = CircleOfFifthAlterations;
@@ -36,8 +37,52 @@ export class TonalityCalculatorService {
         }
       }
     }
-    alteredNotes = scaleSequence;
-    return alteredNotes;
+
+    let newSeq = this.applyScaleType(scaleSequence, circleToUse, scaleType);
+    return newSeq;
+  }
+
+  private applyScaleType(noteCollection: string[],circleToUse: string,  scaleType: string){
+    switch(scaleType)
+    {
+      case ScaleType.harmonic:
+        noteCollection[6] = this.AddSemitones(noteCollection[6],circleToUse, 1);
+        break;
+      case ScaleType.melodic:
+        noteCollection[5] = this.AddSemitones(noteCollection[5],circleToUse, 1);
+        noteCollection[6] = this.AddSemitones(noteCollection[6],circleToUse, 1);
+        break;
+      case ScaleType.pentatonic:
+        let newColl = this.getPentatonicScale(noteCollection);
+        noteCollection = null;
+        noteCollection = newColl;
+    }
+
+    return noteCollection;
+  }
+
+  private getPentatonicScale(entireScale: string[]): Array<string>{
+    let pScale = new Array<string>(5);
+    let ii = 0;
+    for(let i = 0; i < entireScale.length; i++){
+      if(i != 3 && i != 6){
+        pScale[ii] = entireScale[i];
+        ii++;
+      }
+    }
+
+    return pScale;
+  }
+
+  private AddSemitones(note: string, circleToUse: string, numberOfSempitones: number): string{
+
+    let referenceNoteList = (circleToUse === 'asc')? AscendingNoteList: DescendingNoteList;
+    let indexOfNote = referenceNoteList.findIndex(n => n.note === note);
+    let newIndex = (indexOfNote + numberOfSempitones)
+    newIndex = (newIndex > 11)? newIndex - 12: newIndex;
+    let foundNote = referenceNoteList.find(n => n.index === newIndex);
+
+    return foundNote.note;
   }
 
   private getNumberOfAlterations(

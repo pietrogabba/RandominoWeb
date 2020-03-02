@@ -1,6 +1,7 @@
 import { ScaleType } from './scaletype';
 import { SelectOptionModel } from './select-option-model';
 import { SelectionModel } from '@angular/cdk/collections';
+import { IndexedNote } from '../entities/indexed-note';
 
 // circolo delle quinte (alterazioni #)
 export const CircleOfFifth = [
@@ -59,3 +60,33 @@ export const minorScaleTypeList: SelectOptionModel[] = [
     new SelectOptionModel(ScaleType.pentatonic, 'Pentatonica'),
     new SelectOptionModel(ScaleType.blues, 'Blues')
 ];
+
+export const AscendingNoteList: IndexedNote[] = [
+    new IndexedNote(0, 'A'),
+    new IndexedNote(1, 'A#'),
+    new IndexedNote(2, 'B'),
+    new IndexedNote(3, 'B#'),
+    new IndexedNote(4, 'C#'),
+    new IndexedNote(5, 'D'),
+    new IndexedNote(6, 'D#'),
+    new IndexedNote(7, 'E'),
+    new IndexedNote(8, 'E#'),
+    new IndexedNote(9, 'F#'),
+    new IndexedNote(10, 'G'),
+    new IndexedNote(11, 'G#')
+]
+
+export const DescendingNoteList: IndexedNote[] = [
+    new IndexedNote(0, 'A'),
+    new IndexedNote(1, 'Bb'),
+    new IndexedNote(2, 'Cb'),
+    new IndexedNote(3, 'C'),
+    new IndexedNote(4, 'Db'),
+    new IndexedNote(5, 'D'),
+    new IndexedNote(6, 'Eb'),
+    new IndexedNote(7, 'Fb'),
+    new IndexedNote(8, 'F'),
+    new IndexedNote(9, 'Gb'),
+    new IndexedNote(10, 'G'),
+    new IndexedNote(11, 'Ab')
+]

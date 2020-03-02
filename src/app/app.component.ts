@@ -2,14 +2,11 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TonalityRequest } from './entities/tonality-request';
-import { TonalityCalculatorService } from './services/tonality-calculator.service';
 import { CircleOfFifth, circleOfFourth, majorScaleTypeList, minorScaleTypeList } from './global/definitions';
 import { SelectOptionModel } from './global/select-option-model';
-
-interface TonicNote{
-  value: string,
-  viewValue: string
-}
+import { TonalityCalculatorService } from './services/tonality-calculator.service';
+import { Flavor } from './global/flavour';
+import { ScaleType } from './global/scaletype';
 
 @Component({
   selector: 'app-root',
@@ -34,8 +31,8 @@ export class AppComponent {
     this.scaleForm = fb.group({
       cmbCircle: ['asc', Validators.required],
       cmbTonic: ['', Validators.required],
-      rdFlavour: ['major'],
-      cmbScaleType: ['natural', Validators.required],
+      rdFlavour: [Flavor.major],
+      cmbScaleType: [ScaleType.natural, Validators.required],
       txtResult: []
     });
 
@@ -45,6 +42,12 @@ export class AppComponent {
       this.model.flavour = value.rdFlavour;
       this.model.scaleType = value.cmbScaleType;
     });
+
+    // TEST TEST TEST
+    // var sss = this.tonalityCalcService.getTonalityNoteCollection('C', 'asc', 'major', 'natural');
+    // let s = this.tonalityCalcService.applyScaleType(sss, 'asc', 'pentatonic');
+    // console.log(s);
+
   }
 
   cmbCircle_OnChange(){
@@ -58,9 +61,9 @@ export class AppComponent {
   }
 
   fillCmbScaleTypes(){
-    if(this.model.flavour === 'minor'){
+    if(this.model.flavour === Flavor.minor){
       this.scaleTypes = minorScaleTypeList;
-    }else if (this.model.flavour === 'major'){
+    }else if (this.model.flavour === Flavor.major){
       this.scaleTypes = majorScaleTypeList;
     }
 
@@ -69,9 +72,9 @@ export class AppComponent {
 
   fillCmbTonic(){
     if(this.model.circle === 'asc'){
-      this.tonicNotes = (this.model.flavour === 'minor')?CircleOfFifth.map(x => x.relatedMinor):CircleOfFifth.map(x => x.note);
+      this.tonicNotes = (this.model.flavour === Flavor.minor) ? CircleOfFifth.map(x => x.relatedMinor) : CircleOfFifth.map(x => x.note);
     }else if (this.model.circle === 'desc'){
-      this.tonicNotes = (this.model.flavour === 'minor')?circleOfFourth.map(x => x.relatedMinor):circleOfFourth.map(x => x.note);
+      this.tonicNotes = (this.model.flavour === Flavor.minor) ? circleOfFourth.map(x => x.relatedMinor) : circleOfFourth.map(x => x.note);
     }
 
     this.scaleForm.patchValue({cmbTonic: null}); //resetto perche si ripopola
@@ -80,7 +83,7 @@ export class AppComponent {
   calculateScale()
   {
     //this.scaleForm.patchValue({txtResult: ''}, {emitEvent: false});
-    let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.circle, this.model.flavour);
+    let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.circle, this.model.flavour, this.model.scaleType);
     this.scaleForm.patchValue({
       txtResult: calculatedScaleArray.join(',')
     }, { emitEvent: false });
