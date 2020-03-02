@@ -1,3 +1,7 @@
+import { ScaleType } from './scaletype';
+import { SelectOptionModel } from './select-option-model';
+import { SelectionModel } from '@angular/cdk/collections';
+
 // circolo delle quinte (alterazioni #)
 export const CircleOfFifth = [
     { note: 'C', relatedMinor: 'A', alterations: 0},
@@ -42,3 +46,16 @@ export const circleOfFourthAlterations = [
     {index: 6, alteration: 'F'},
 ];
 
+export const majorScaleTypeList = [
+    new SelectOptionModel(ScaleType.natural, 'Naturale'),
+    new SelectOptionModel(ScaleType.pentatonic, 'Pentatonica'),
+    new SelectOptionModel(ScaleType.blues, 'Blues')
+];
+
+export const minorScaleTypeList: SelectOptionModel[] = [
+    new SelectOptionModel(ScaleType.natural, 'Naturale'),
+    new SelectOptionModel(ScaleType.melodic, 'Melodica'),
+    new SelectOptionModel(ScaleType.harmonic, 'Armonica'),
+    new SelectOptionModel(ScaleType.pentatonic, 'Pentatonica'),
+    new SelectOptionModel(ScaleType.blues, 'Blues')
+];

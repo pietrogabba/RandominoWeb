@@ -36,6 +36,16 @@
       </div>
       <div class="col-sm-3">
         <mat-form-field>
+          <mat-label>Tipologia</mat-label>
+          <mat-select formControlName="cmbScaleType">
+            <mat-option *ngFor="let type of scaleTypes" [value]="type.value">
+              {{type.valueView}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-3">
+        <mat-form-field>
           <mat-label>Tonica</mat-label>
           <mat-select formControlName="cmbTonic">
             <mat-option *ngFor="let tonic of tonicNotes" [value]="tonic">
@@ -44,7 +54,6 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-sm-3"></div>
     </div>
     <div class="row">
       <div class="col-sm-12">
