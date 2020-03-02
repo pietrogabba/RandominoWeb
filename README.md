@@ -3,16 +3,12 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
 ## ToDo list:
-1. Introdurre altre tipologie di scale:
-    a. pentatonica
+- Introdurre altre tipologie di scale:
     b. blues
-    c. melodica
-    d. armonica
     e. dorica ?
-2. Replace delle strane note (es: E#)    
-3. Fare visualizzazione TAB chitarra per scale
-4. Fare visualizzazione Keyboard view
-5. Generazione casuale di giri armonici
+- Fare visualizzazione TAB chitarra per scale
+- Fare visualizzazione Keyboard view
+- Generazione casuale di giri armonici
 
 ## Development server
 

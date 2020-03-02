@@ -25,7 +25,7 @@ export class AppComponent {
   constructor(private tonalityCalcService: TonalityCalculatorService, fb: FormBuilder)
   {
     this.model = new TonalityRequest();
-    this.tonicNotes = CircleOfFifth.map(x => x.note);
+    this.tonicNotes = CircleOfFifth.sort((a, b) => (a.index > b.index) ? 1 : -1).map(x => x.note);
     this.scaleTypes = majorScaleTypeList;
 
     this.scaleForm = fb.group({
@@ -71,11 +71,15 @@ export class AppComponent {
   }
 
   fillCmbTonic(){
+    let sortObjArr: any;
     if(this.model.circle === 'asc'){
-      this.tonicNotes = (this.model.flavour === Flavor.minor) ? CircleOfFifth.map(x => x.relatedMinor) : CircleOfFifth.map(x => x.note);
+      sortObjArr = CircleOfFifth;
     }else if (this.model.circle === 'desc'){
-      this.tonicNotes = (this.model.flavour === Flavor.minor) ? circleOfFourth.map(x => x.relatedMinor) : circleOfFourth.map(x => x.note);
+      sortObjArr = circleOfFourth;
     }
+    
+    sortObjArr = sortObjArr.sort((a, b) => (a.index > b.index) ? 1 : -1);
+    this.tonicNotes = (this.model.flavour === Flavor.minor) ? sortObjArr.map(x => x.relatedMinor) : sortObjArr.map(x => x.note);
 
     this.scaleForm.patchValue({cmbTonic: null}); //resetto perche si ripopola
   }

@@ -14,8 +14,6 @@ export class TonalityCalculatorService {
   {
     if(!tonicNote)
       return [];
-
-    //let calculatedNoteColl = new Array<string>();
     let numberOfAlterations = 0;
     let alterationSymbol = Alteration.sharp;
     let referenceCircleAlterations = CircleOfFifthAlterations;
@@ -39,7 +37,13 @@ export class TonalityCalculatorService {
     }
 
     let newSeq = this.applyScaleType(scaleSequence, circleToUse, scaleType);
-    return newSeq;
+    return this.NormalizeStrangeNotes(newSeq);
+  }
+
+  private NormalizeStrangeNotes(sequence: string[]): string[] {
+    let str: string = sequence.join(';');
+    str = str.replace('E#','F').replace('B#','C').replace('Fb','E').replace('Cb','B');
+    return str.split(';');
   }
 
   private applyScaleType(noteCollection: string[],circleToUse: string,  scaleType: string){
@@ -53,9 +57,12 @@ export class TonalityCalculatorService {
         noteCollection[6] = this.AddSemitones(noteCollection[6],circleToUse, 1);
         break;
       case ScaleType.pentatonic:
-        let newColl = this.getPentatonicScale(noteCollection);
-        noteCollection = null;
-        noteCollection = newColl;
+        noteCollection = this.getPentatonicScale(noteCollection);
+        break;
+      // case ScaleType.blues:
+      //   noteCollection = this.getPentatonicScale(noteCollection);  
+      //   noteCollection = this.AddBlueNote(noteCollection);
+        break;
     }
 
     return noteCollection;

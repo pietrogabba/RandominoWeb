@@ -5,14 +5,14 @@ import { IndexedNote } from '../entities/indexed-note';
 
 // circolo delle quinte (alterazioni #)
 export const CircleOfFifth = [
-    { note: 'C', relatedMinor: 'A', alterations: 0},
-    { note: 'G', relatedMinor: 'E', alterations: 1},
-    { note: 'D', relatedMinor: 'B', alterations: 2},
-    { note: 'A', relatedMinor: 'F#', alterations: 3},
-    { note: 'E', relatedMinor: 'C#', alterations: 4},
-    { note: 'B', relatedMinor: 'G#', alterations: 5},
-    { note: 'F#', relatedMinor: 'D#', alterations: 6},
-    { note: 'C#', relatedMinor: 'A#', alterations: 7}
+    { index: 0, note: 'C', relatedMinor: 'A', alterations: 0},
+    { index: 4, note: 'G', relatedMinor: 'E', alterations: 1},
+    { index: 1, note: 'D', relatedMinor: 'B', alterations: 2},
+    { index: 5, note: 'A', relatedMinor: 'F#', alterations: 3},
+    { index: 2, note: 'E', relatedMinor: 'C#', alterations: 4},
+    { index: 6, note: 'B', relatedMinor: 'G#', alterations: 5},
+    { index: 3, note: 'F#', relatedMinor: 'D#', alterations: 6},
+    { index: 7, note: 'C#', relatedMinor: 'A#', alterations: 7}
 ];
 
 export const CircleOfFifthAlterations = [
@@ -27,14 +27,14 @@ export const CircleOfFifthAlterations = [
 
 // circolo delle quarte (alterazioni b)
 export const circleOfFourth = [
-    { note: 'C', relatedMinor: 'A', alterations: 0},
-    { note: 'F', relatedMinor: 'D', alterations: 1},
-    { note: 'Bb', relatedMinor: 'G', alterations: 2},
-    { note: 'Eb', relatedMinor: 'C', alterations: 3},
-    { note: 'Ab', relatedMinor: 'F', alterations: 4},
-    { note: 'Db', relatedMinor: 'Bb', alterations: 5},
-    { note: 'Gb', relatedMinor: 'Eb', alterations: 6},
-    { note: 'Cb', relatedMinor: 'Ab', alterations: 7}
+    { index: 0, note: 'C', relatedMinor: 'A', alterations: 0},
+    { index: 3, note: 'F', relatedMinor: 'D', alterations: 1},
+    { index: 6, note: 'Bb', relatedMinor: 'G', alterations: 2},
+    { index: 2, note: 'Eb', relatedMinor: 'C', alterations: 3},
+    { index: 5, note: 'Ab', relatedMinor: 'F', alterations: 4},
+    { index: 1, note: 'Db', relatedMinor: 'Bb', alterations: 5},
+    { index: 4, note: 'Gb', relatedMinor: 'Eb', alterations: 6},
+    { index: 7, note: 'Cb', relatedMinor: 'Ab', alterations: 7}
 ];
 
 export const circleOfFourthAlterations = [
