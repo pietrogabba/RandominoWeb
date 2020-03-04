@@ -12,13 +12,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GuitarFretBoardModule } from './guitar-fret-board/guitar-fret-board.module';
-import { FormatFretNote } from './pipes/format-fret-note';
+import { FormatFretNote } from './global/pipes/format-fret-note';
+import { DiagramViewModule } from './diagram-view/diagram-view.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FormatFretNote
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +32,8 @@ import { FormatFretNote } from './pipes/format-fret-note';
     MatRadioModule,
     ReactiveFormsModule,
     MatButtonModule,
-    GuitarFretBoardModule
+    DiagramViewModule
   ],
-  exports: [FormatFretNote],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
     useValue: {color: 'primary'}
