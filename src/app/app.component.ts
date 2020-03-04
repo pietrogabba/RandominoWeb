@@ -21,6 +21,7 @@ export class AppComponent {
   scaleForm: FormGroup;
   tonicNotes: Array<string>;
   scaleTypes: SelectOptionModel[];
+  calculatedScaleArray: string[];
 
   constructor(private tonalityCalcService: TonalityCalculatorService, fb: FormBuilder)
   {
@@ -86,10 +87,9 @@ export class AppComponent {
 
   calculateScale()
   {
-    //this.scaleForm.patchValue({txtResult: ''}, {emitEvent: false});
-    let calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.circle, this.model.flavour, this.model.scaleType);
+    this.calculatedScaleArray = this.tonalityCalcService.getTonalityNoteCollection(this.model.tonic, this.model.circle, this.model.flavour, this.model.scaleType);
     this.scaleForm.patchValue({
-      txtResult: calculatedScaleArray.join(',')
+      txtResult: this.calculatedScaleArray.join(',')
     }, { emitEvent: false });
   }
 

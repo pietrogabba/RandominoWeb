@@ -7,15 +7,22 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GuitarFretComponent implements OnInit {
   @Input() fretNote: string;
+  @Input() fretPressedIcon: string;
   @Input() active: boolean = false;
 
   constructor() {
-    if(!this.fretNote)
-      this.fretNote = '-';
+    if(!this.fretPressedIcon)
+      this.fretPressedIcon = '';
    }
 
-  clear(){
-    this.fretNote = '-';
+  setActive(){
+    this.active = true;
+    this.fretPressedIcon = 'check_circle';
+  }
+
+  setInactive(){
+    this.active = false;
+    this.fretPressedIcon = '';
   }
 
   ngOnInit(): void {

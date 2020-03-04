@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, AfterViewInit, Input, OnChanges } from '@angular/core';
 import { GuitarFretComponent } from '../guitar-fret/guitar-fret.component';
 
 @Component({
@@ -6,18 +6,30 @@ import { GuitarFretComponent } from '../guitar-fret/guitar-fret.component';
   templateUrl: './guitar-fret-board.component.html',
   styleUrls: ['./guitar-fret-board.component.scss']
 })
-export class GuitarFretBoardComponent implements OnInit, AfterViewInit {
-  //TODO: eh eh! Questo ti permette di iterare sui fret (dio cane)
+export class GuitarFretBoardComponent implements OnInit, OnChanges {
+
+  @Input() calculatedScaleArray: Array<string>;
   @ViewChildren('apfret') frets: QueryList<GuitarFretComponent>;
 
   constructor() { }
 
   ngOnInit(): void {
-    
+   
   }
-  ngAfterViewInit(): void {
 
-    this.frets.forEach(fret => console.log('fret: ' + fret.fretNote))
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    if(this.calculatedScaleArray){
 
+      //this.calculatedScaleArray.forEach(element => {
+        this.frets.forEach(fret => {
+          if(this.calculatedScaleArray.includes(fret.fretNote))
+            fret.setActive();
+          else
+            fret.setInactive();
+        });
+      };
+
+    //} 
   }
+
 }
