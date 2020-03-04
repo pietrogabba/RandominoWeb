@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Alteration } from '../global/alteration';
-import { CircleOfFifth, CircleOfFifthAlterations, circleOfFourthAlterations, circleOfFourth, AscendingNoteList, DescendingNoteList } from '../global/definitions';
-import { ScaleType } from '../global/scaletype';
+import { Alteration } from '../global/enums/alteration';
+import { CircleOfFifth, CircleOfFifthAlterations, circleOfFourthAlterations, circleOfFourth, AscendingNoteList, DescendingNoteList } from '../global/models/definitions';
+import { ScaleType } from '../global/enums/scaletype';
 
 @Injectable({
   providedIn: 'root'

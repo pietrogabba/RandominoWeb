@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,11 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { GuitarFretBoardModule } from './guitar-fret-board/guitar-fret-board.module';
+import { FormatFretNote } from './pipes/format-fret-note';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormatFretNote
   ],
   imports: [
     BrowserModule,
@@ -29,8 +32,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    GuitarFretBoardModule
   ],
+  exports: [FormatFretNote],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
     useValue: {color: 'primary'}

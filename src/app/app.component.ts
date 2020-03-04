@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TonalityRequest } from './entities/tonality-request';
-import { CircleOfFifth, circleOfFourth, majorScaleTypeList, minorScaleTypeList } from './global/definitions';
-import { SelectOptionModel } from './global/select-option-model';
+import { Flavor } from './global/enums/flavour';
+import { ScaleType } from './global/enums/scaletype';
+import { CircleOfFifth, circleOfFourth, majorScaleTypeList, minorScaleTypeList } from './global/models/definitions';
+import { SelectOptionModel } from './global/models/select-option-model';
 import { TonalityCalculatorService } from './services/tonality-calculator.service';
-import { Flavor } from './global/flavour';
-import { ScaleType } from './global/scaletype';
 
 @Component({
   selector: 'app-root',

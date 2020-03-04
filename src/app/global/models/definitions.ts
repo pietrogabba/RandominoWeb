@@ -1,7 +1,6 @@
-import { ScaleType } from './scaletype';
+import { IndexedNote } from '../../entities/indexed-note';
+import { ScaleType } from '../enums/scaletype';
 import { SelectOptionModel } from './select-option-model';
-import { SelectionModel } from '@angular/cdk/collections';
-import { IndexedNote } from '../entities/indexed-note';
 
 // circolo delle quinte (alterazioni #)
 export const CircleOfFifth = [
