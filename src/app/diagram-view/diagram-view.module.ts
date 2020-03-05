@@ -15,7 +15,8 @@ import { KeyBoardComponent } from './key-board/key-board.component';
     MatIconModule
   ],
   exports: [
-    GuitarFretBoardComponent
+    GuitarFretBoardComponent,
+    KeyBoardComponent
   ]
 })
 export class DiagramViewModule { }

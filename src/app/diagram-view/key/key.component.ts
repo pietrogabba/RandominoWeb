@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-key',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./key.component.scss']
 })
 export class KeyComponent implements OnInit {
+  @Input() leftNote: string;
+  @Input() note: string;
+  @Input() rightNote: string;
 
   constructor() { }
 

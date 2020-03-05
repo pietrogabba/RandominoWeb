@@ -1,1 +1,12 @@
-<p>key works!</p>
+<table class="key">
+    <tr class="upkey">
+        <td [ngClass]="(leftNote != undefined)?'black-k sborderleft':'white-k sborderleft'">&nbsp;</td>
+        <td class="center-k">&nbsp;</td>
+        <td [ngClass]="(rightNote != undefined)?'black-k sborderright':'white-k sborderright'">&nbsp;</td>
+    </tr>
+    <tr class="downkey">
+        <td colspan="3" class="white-key">
+            {{note}}
+        </td>
+    </tr>
+</table>

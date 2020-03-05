@@ -1,0 +1,60 @@
+.key{
+    height: 100%;
+    width: 100%;
+}
+
+.key td{
+    text-align: center;
+    padding: 0px;
+    vertical-align: middle;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.key tr.upkey td{
+    border-bottom-width:0px;
+}
+
+.key tr.downkey td{
+    border-style: solid;
+    border-top-width:0px;
+    border-left-width:1px;
+    border-right-width:1px;
+    border-color: #000000;
+}
+
+.key tr{
+    height: 50%;
+}
+
+.black-k {
+    background-color: black;
+    width: 25%;
+}
+
+.center-k{
+    width: 50%;
+    background-color: white;
+}
+
+.white-k {
+    background-color: white;
+    width: 25%;
+}
+
+.sborderleft{
+    border-left-width: 1px;
+    border-right-width: 0px;
+    border-left-style: solid;
+    border-left-color: #000000;
+}
+
+.sborderright{
+    border-left-width: 0px;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: #000000;  
+}
+
+.white-key{
+    background-color: white;
+}
