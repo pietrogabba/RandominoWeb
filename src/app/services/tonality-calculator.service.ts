@@ -43,8 +43,8 @@ export class TonalityCalculatorService {
 
   private NormalizeStrangeNotes(sequence: string[]): string[] {
     let str: string = sequence.join(';');
-    str = str.replace('E#','F').replace('B#','C').replace('Fb','E').replace('Cb','B')
-      .replace('D#', 'Eb').replace('A#', 'Bb');
+    str = str.replace('E#','F').replace('B#','C').replace('Fb','E').replace('Cb','B');
+      //.replace('D#', 'Eb').replace('A#', 'Bb');
     return str.split(';');
   }
 

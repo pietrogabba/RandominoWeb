@@ -23,9 +23,13 @@ export class GuitarFretBoardComponent implements OnInit, OnChanges {
     if(this.calculatedScaleArray){
       if(this.frets){
         this.frets.forEach(fret => {
-          if(this.calculatedScaleArray.includes(fret.fretNote))
+          let isDoubleValue: boolean = fret.fretNote.includes(';');
+          let fn1: string = fret.fretNote.split(';')[0];
+          let fn2: string = (isDoubleValue)?fret.fretNote.split(';')[1]:'NoNote';
+
+          if(this.calculatedScaleArray.includes(fn1) || this.calculatedScaleArray.includes(fn2))
           {  
-            let isTonic = (fret.fretNote === this.tonicNote);
+            let isTonic = (fn1 === this.tonicNote || fn2 === this.tonicNote);
             fret.setActive(isTonic);
           }
           else

@@ -20,9 +20,13 @@ export class KeyBoardComponent implements OnInit, OnChanges {
     if(this.calculatedScaleArray){
       if(this.keys){
         this.keys.forEach(key => {
-
-          if(this.calculatedScaleArray.includes(key.leftNote)){
-            let isTonic = (key.leftNote === this.tonicNote);
+          let leftNote1: string = (key.leftNote)?key.leftNote.split(';')[0]:'';
+          let leftNote2: string = (key.leftNote)?key.leftNote.split(';')[1]:'';
+          let rightNote1: string = (key.rightNote)?key.rightNote.split(';')[0]:'';
+          let rightNote2: string = (key.rightNote)?key.rightNote.split(';')[1]:'';
+          
+          if(this.calculatedScaleArray.includes(leftNote1) || this.calculatedScaleArray.includes(leftNote2)){
+            let isTonic = (leftNote1 === this.tonicNote || leftNote2 === this.tonicNote);
             key.setActiveLeftNote(isTonic);
           }else
             key.setInactiveLeftNote();
@@ -33,8 +37,8 @@ export class KeyBoardComponent implements OnInit, OnChanges {
           }else
             key.setInactiveCenterNote();
 
-          if(this.calculatedScaleArray.includes(key.rightNote)){
-            let isTonic = (key.rightNote === this.tonicNote);
+          if(this.calculatedScaleArray.includes(rightNote1) || this.calculatedScaleArray.includes(rightNote2)){
+            let isTonic = (rightNote1 === this.tonicNote || rightNote2 === this.tonicNote);
             key.setActiveRightNote(isTonic);
           }else
             key.setInactiveRightNote();
