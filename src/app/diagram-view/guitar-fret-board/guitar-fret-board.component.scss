@@ -4,9 +4,11 @@
 }
 
 .guitarDiagram td {
-    border-style: solid;
+    //border-style: solid;
     border-width: 1px;
-    border-color: #eeeeee;
+    //border-color: #eeeeee;
+    border-left-style: dotted;
+    border-left-color: black;
     font-family: 'Courier New', Courier, monospace;
     height: 30px;
     vertical-align: middle;

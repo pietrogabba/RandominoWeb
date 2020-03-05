@@ -9,20 +9,28 @@ export class GuitarFretComponent implements OnInit {
   @Input() fretNote: string;
   @Input() fretPressedIcon: string;
   @Input() active: boolean = false;
-
+  
+  polptype: string = 'pressed';
+  
   constructor() {
     if(!this.fretPressedIcon)
       this.fretPressedIcon = '';
    }
 
-  setActive(){
+  setActive(isTonic: boolean){
     this.active = true;
-    this.fretPressedIcon = 'check_circle';
+    this.fretPressedIcon = 'play_circle_filled';
+    if(isTonic){
+      this.polptype = 'tonic';
+    }else{
+      this.polptype = 'pressed';
+    }
   }
 
   setInactive(){
     this.active = false;
     this.fretPressedIcon = '';
+    this.polptype = 'pressed';
   }
 
   ngOnInit(): void {

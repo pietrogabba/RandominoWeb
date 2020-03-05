@@ -9,13 +9,17 @@
 }
 
 .fretNotePressed{
-    //font-weight: bold;
-    color: red;
     z-index: 1;
 }
 
-.polpastrello{
+.polpastrello-pressed{
     transform: scale(0.8);
+    color: red;
+}
+
+.polpastrello-tonic{
+    transform: scale(0.8);
+    color: blue;
 }
 
 .string {
