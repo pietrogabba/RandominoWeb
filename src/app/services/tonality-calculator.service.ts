@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Alteration } from '../global/enums/alteration';
 import { CircleOfFifth, CircleOfFifthAlterations, circleOfFourthAlterations, circleOfFourth, AscendingNoteList, DescendingNoteList } from '../global/models/definitions';
 import { ScaleType } from '../global/enums/scaletype';
+import { Flavor } from '../global/enums/flavour';
 
 @Injectable({
   providedIn: 'root'
@@ -36,17 +37,18 @@ export class TonalityCalculatorService {
       }
     }
 
-    let newSeq = this.applyScaleType(scaleSequence, circleToUse, scaleType);
+    let newSeq = this.applyScaleType(scaleSequence, circleToUse, scaleType, flavour);
     return this.NormalizeStrangeNotes(newSeq);
   }
 
   private NormalizeStrangeNotes(sequence: string[]): string[] {
     let str: string = sequence.join(';');
-    str = str.replace('E#','F').replace('B#','C').replace('Fb','E').replace('Cb','B');
+    str = str.replace('E#','F').replace('B#','C').replace('Fb','E').replace('Cb','B')
+      .replace('D#', 'Eb').replace('A#', 'Bb');
     return str.split(';');
   }
 
-  private applyScaleType(noteCollection: string[],circleToUse: string,  scaleType: string){
+  private applyScaleType(noteCollection: string[], circleToUse: string, scaleType: string, flavour: string){
     switch(scaleType)
     {
       case ScaleType.harmonic:
@@ -57,7 +59,7 @@ export class TonalityCalculatorService {
         noteCollection[6] = this.AddSemitones(noteCollection[6],circleToUse, 1);
         break;
       case ScaleType.pentatonic:
-        noteCollection = this.getPentatonicScale(noteCollection);
+        noteCollection = this.getPentatonicScale(noteCollection, flavour);
         break;
       // case ScaleType.blues:
       //   noteCollection = this.getPentatonicScale(noteCollection);  
@@ -68,11 +70,14 @@ export class TonalityCalculatorService {
     return noteCollection;
   }
 
-  private getPentatonicScale(entireScale: string[]): Array<string>{
+  private getPentatonicScale(entireScale: string[], flavour: string): Array<string>{
+    let exOne = (flavour === Flavor.major)? 3: 1;
+    let exTwo = (flavour === Flavor.major)? 6: 5;
+
     let pScale = new Array<string>(5);
     let ii = 0;
     for(let i = 0; i < entireScale.length; i++){
-      if(i != 3 && i != 6){
+      if(i != exOne && i != exTwo){
         pScale[ii] = entireScale[i];
         ii++;
       }

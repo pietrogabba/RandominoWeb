@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Introdurre altre tipologie di scale:
     b. blues
     e. dorica ?
-- Fare visualizzazione TAB chitarra per scale
+- Perfezionare fret board
 - Fare visualizzazione Keyboard view
 - Generazione casuale di giri armonici
 
