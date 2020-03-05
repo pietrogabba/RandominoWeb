@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChildren, QueryList, AfterViewInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, QueryList, ViewChildren } from '@angular/core';
+
 import { GuitarFretComponent } from '../guitar-fret/guitar-fret.component';
-import { FormatFretNote } from 'src/app/global/pipes/format-fret-note';
 
 @Component({
   selector: 'app-guitar-fret-board',

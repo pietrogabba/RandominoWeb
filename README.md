@@ -3,9 +3,10 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
 ## ToDo list:
+- BUGS:
+    1. Problema del Cb
 - KeyBoard/FretBoard:
-    1. Fix su circolo discendente
-    2. pressed delle corde a vuoto
+    1. pressed delle corde a vuoto
 - Introdurre altre tipologie di scale:
     b. blues
     e. dorica ?
