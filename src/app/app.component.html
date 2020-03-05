@@ -86,7 +86,7 @@
           </mat-tab>
           <mat-tab label="Keyboard view">
             <div class="instrumentContainer">
-              <app-key-board></app-key-board>
+              <app-key-board [calculatedScaleArray]='calculatedScaleArray' [tonicNote]='cmbTonic.value'></app-key-board>
             </div>
           </mat-tab>
         </mat-tab-group>
