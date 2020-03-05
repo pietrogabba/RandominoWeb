@@ -73,7 +73,23 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <app-guitar-fret-board [calculatedScaleArray]='calculatedScaleArray'  [tonicNote]='cmbTonic.value'></app-guitar-fret-board>
+        <button mat-raised-button color="primary" (click)="viewInstruments()">Instruments View (toggle)</button>
+      </div>
+    </div>
+    <div class="row" *ngIf='instrumentsView === true'>
+      <div class="col-sm-12">
+        <mat-tab-group>
+          <mat-tab label="Guitar FretBoard">
+            <div class="instrumentContainer">
+              <app-guitar-fret-board [calculatedScaleArray]='calculatedScaleArray'  [tonicNote]='cmbTonic.value'></app-guitar-fret-board>
+            </div>
+          </mat-tab>
+          <mat-tab label="Keyboard view">
+            <div class="instrumentContainer">
+              Qui ci sarà la tastiera ;)
+            </div>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
   </form>

@@ -6,13 +6,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormatFretNote } from './global/pipes/format-fret-note';
 import { DiagramViewModule } from './diagram-view/diagram-view.module';
 
 @NgModule({
@@ -32,7 +32,8 @@ import { DiagramViewModule } from './diagram-view/diagram-view.module';
     MatRadioModule,
     ReactiveFormsModule,
     MatButtonModule,
-    DiagramViewModule
+    DiagramViewModule,
+    MatTabsModule
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
