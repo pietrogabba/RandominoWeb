@@ -21,6 +21,7 @@ export class GuitarFretBoardComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
     if(this.calculatedScaleArray){
+      if(this.frets){
         this.frets.forEach(fret => {
           if(this.calculatedScaleArray.includes(fret.fretNote))
           {  
@@ -32,7 +33,8 @@ export class GuitarFretBoardComponent implements OnInit, OnChanges {
             fret.setInactive();
           }
         });
-      };
+      }
+    };
   }
 
 }

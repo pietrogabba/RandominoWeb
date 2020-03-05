@@ -60,8 +60,36 @@
     color: red;
 }
 
-.active-key{
+.color-black{
+    color: black;
+}
+
+.color-red{
+    color: red;
+}
+
+.color-blue{
+    color: blue;
+}
+
+.active-key-black{
+    background-color: black;
+    width: 100%;
+    margin-top:0px;
+    margin-bottom:0px;
+    height: 100%;
+}
+
+.active-key-red{
     background-color: red;
+    width: 100%;
+    margin-top:0px;
+    margin-bottom:0px;
+    height: 100%;
+}
+
+.active-key-blue{
+    background-color: blue;
     width: 100%;
     margin-top:0px;
     margin-bottom:0px;

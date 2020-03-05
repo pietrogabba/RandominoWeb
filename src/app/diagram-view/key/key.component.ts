@@ -16,6 +16,9 @@ export class KeyComponent implements OnInit {
   @Input() activeRight: boolean = false;
 
   activeIcon: string;
+  lcolor: string = 'black';
+  ccolor: string = 'red';
+  rcolor: string = 'black';
 
   constructor() {
     if(!this.activeIcon)
@@ -27,28 +30,34 @@ export class KeyComponent implements OnInit {
 
   setActiveLeftNote(isTonic: boolean) {
     this.activeLeft = true;
+    this.lcolor = (isTonic) ? 'blue' : 'red';
   }
 
   setActiveRightNote(isTonic: boolean) {
     this.activeRight = true;
+    this.rcolor = (isTonic) ? 'blue' : 'red';
   }
 
   setActiveCenterNote(isTonic: boolean) {
     this.activeCenter = true;
     this.activeIcon = 'play_circle_filled';
+    this.ccolor = (isTonic) ? 'blue' : 'red';
   }
 
   setInactiveLeftNote() {
     this.activeLeft = false;
+    this.lcolor = 'black';
   }
 
   setInactiveRightNote() {
     this.activeRight = false;
+    this.rcolor = 'black';
   }
 
   setInactiveCenterNote() {
     this.activeCenter = false;    
     this.activeIcon = '';
+    this.ccolor = 'red';
   }
 
 }

@@ -18,26 +18,28 @@ export class KeyBoardComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
     if(this.calculatedScaleArray){
-      this.keys.forEach(key => {
+      if(this.keys){
+        this.keys.forEach(key => {
 
-        if(this.calculatedScaleArray.includes(key.leftNote)){
-          let isTonic = (key.leftNote === this.tonicNote);
-          key.setActiveLeftNote(isTonic);
-        }else
-          key.setInactiveLeftNote();
+          if(this.calculatedScaleArray.includes(key.leftNote)){
+            let isTonic = (key.leftNote === this.tonicNote);
+            key.setActiveLeftNote(isTonic);
+          }else
+            key.setInactiveLeftNote();
 
-        if(this.calculatedScaleArray.includes(key.note)){
-          let isTonic = (key.note === this.tonicNote);
-          key.setActiveCenterNote(isTonic);
-        }else
-          key.setInactiveCenterNote();
+          if(this.calculatedScaleArray.includes(key.note)){
+            let isTonic = (key.note === this.tonicNote);
+            key.setActiveCenterNote(isTonic);
+          }else
+            key.setInactiveCenterNote();
 
-        if(this.calculatedScaleArray.includes(key.rightNote)){
-          let isTonic = (key.rightNote === this.tonicNote);
-          key.setActiveRightNote(isTonic);
-        }else
-          key.setInactiveRightNote();
-      });
+          if(this.calculatedScaleArray.includes(key.rightNote)){
+            let isTonic = (key.rightNote === this.tonicNote);
+            key.setActiveRightNote(isTonic);
+          }else
+            key.setInactiveRightNote();
+        });
+      }
     };
   }
 
