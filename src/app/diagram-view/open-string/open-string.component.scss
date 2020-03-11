@@ -8,6 +8,10 @@
     border: 1px solid red;
     color: white;
     text-align: center;
+    z-index: 1;
+    top:15%;
+    position: relative;
+    font-size: 12px;
 }
 
 .circled-blue {
@@ -20,6 +24,10 @@
     border: 1px solid blue;
     color: white;
     text-align: center;
+    z-index: 1;
+    top:15%;
+    position: relative;
+    font-size: 12px;
 }
 
 .onote-inactive {
@@ -27,4 +35,8 @@
     height: 10px;
     padding: 2px;
     color:black;
+    z-index: 1;
+    top:15%;
+    position: relative;
+    font-size: 12px;
 }

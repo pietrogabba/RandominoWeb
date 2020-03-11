@@ -4,8 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## ToDo list:
 - BUGS:
-- KeyBoard/FretBoard:
-    1. Usare immagine o css per bollini pressed
+- KeyBoard:
+    1. Usare css per bollini pressed
 - Introdurre altre tipologie di scale:
     b. blues
     e. dorica ?
