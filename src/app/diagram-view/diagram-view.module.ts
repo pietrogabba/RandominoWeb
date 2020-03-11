@@ -7,9 +7,10 @@ import { FormatFretNote } from '../global/pipes/format-fret-note';
 import { MatIconModule } from '@angular/material/icon';
 import { KeyComponent } from './key/key.component';
 import { KeyBoardComponent } from './key-board/key-board.component';
+import { OpenStringComponent } from './open-string/open-string.component';
 
 @NgModule({
-  declarations: [GuitarFretBoardComponent, GuitarFretComponent, FormatFretNote, KeyComponent, KeyBoardComponent],
+  declarations: [GuitarFretBoardComponent, GuitarFretComponent, FormatFretNote, KeyComponent, KeyBoardComponent, OpenStringComponent],
   imports: [
     CommonModule,
     MatIconModule

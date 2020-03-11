@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, QueryList, ViewChildren } from '@angular/core';
 
 import { GuitarFretComponent } from '../guitar-fret/guitar-fret.component';
+import { OpenStringComponent } from '../open-string/open-string.component';
 
 @Component({
   selector: 'app-guitar-fret-board',
@@ -12,6 +13,7 @@ export class GuitarFretBoardComponent implements OnInit, OnChanges {
   @Input() calculatedScaleArray: Array<string>;
   @Input() tonicNote: string;
   @ViewChildren('apfret') frets: QueryList<GuitarFretComponent>;
+  @ViewChildren('apopennote') openNotes: QueryList<OpenStringComponent>;
 
   constructor() { }
 
@@ -35,6 +37,19 @@ export class GuitarFretBoardComponent implements OnInit, OnChanges {
           else
           {
             fret.setInactive();
+          }
+        });
+      }
+
+      if(this.openNotes){
+        this.openNotes.forEach(openNote =>{
+          let onote: string = openNote.note;
+          if(this.calculatedScaleArray.includes(onote)){
+            let isTonic = (onote === this.tonicNote);
+            openNote.setActive(isTonic);
+            console.log(onote);
+          }else{
+            openNote.setInactive();
           }
         });
       }
