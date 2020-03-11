@@ -11,9 +11,14 @@
     border-left-color: black;
     font-family: 'Courier New', Courier, monospace;
     height: 30px;
+    width: 30px;
     vertical-align: middle;
     text-align: center;
     padding: 0px;
+}
+
+.guitarDiagram td.nut {
+    width: 10px;
 }
 
 .fretNumberRow{

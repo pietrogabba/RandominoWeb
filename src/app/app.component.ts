@@ -22,7 +22,7 @@ export class AppComponent {
   tonicNotes: Array<string>;
   scaleTypes: SelectOptionModel[];
   calculatedScaleArray: string[];
-  instrumentsView: boolean = false;
+  instrumentsView: boolean = true;
 
   constructor(private tonalityCalcService: TonalityCalculatorService, fb: FormBuilder)
   {

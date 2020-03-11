@@ -5,8 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## ToDo list:
 - BUGS:
 - KeyBoard/FretBoard:
-    1. pressed delle corde a vuoto
-    2. Usare immagine per bollini pressed
+    1. Usare immagine o css per bollini pressed
 - Introdurre altre tipologie di scale:
     b. blues
     e. dorica ?
