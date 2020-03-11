@@ -32,8 +32,8 @@ export const circleOfFourth = [
     { index: 2, note: 'Eb', relatedMinor: 'C', alterations: 3},
     { index: 5, note: 'Ab', relatedMinor: 'F', alterations: 4},
     { index: 1, note: 'Db', relatedMinor: 'Bb', alterations: 5},
-    { index: 4, note: 'Gb', relatedMinor: 'Eb', alterations: 6},
-    { index: 7, note: 'Cb', relatedMinor: 'Ab', alterations: 7}
+    { index: 4, note: 'Gb', relatedMinor: 'Eb', alterations: 6}
+    //{ index: 7, note: 'Cb', relatedMinor: 'Ab', alterations: 7}
 ];
 
 export const circleOfFourthAlterations = [

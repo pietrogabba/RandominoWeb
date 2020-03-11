@@ -4,9 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## ToDo list:
 - BUGS:
-    1. Problema del Cb
 - KeyBoard/FretBoard:
     1. pressed delle corde a vuoto
+    2. Usare immagine per bollini pressed
 - Introdurre altre tipologie di scale:
     b. blues
     e. dorica ?
